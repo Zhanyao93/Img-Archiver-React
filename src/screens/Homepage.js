@@ -10,9 +10,10 @@ function Homepage() {
         <DataProvider>
             <Sidebar />
             
-            <Router>
+            <Router basename="/Img-Archiver-React">
                 <Routes>
-                <Route path="/" element={<Mainpage />}></Route>
+                    <Route path="/main" element={<Mainpage />}></Route>
+                    <Route path="/" element={<Mainpage />}></Route>
                 </Routes>
             </Router>
         </DataProvider>
