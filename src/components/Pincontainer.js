@@ -1,36 +1,34 @@
 import React from "react";
 import Pin from "./Pin";
+import { useContext } from "react";
+import DataContext from "../contexts/DataContext";
 
-function Pincontainer(props) {
+function Pincontainer() {
+    const {data} = useContext(DataContext);
 
-    const {data} = props
-    let allPin = ""
-
-    const deletePin = (URL) => {
-        props.deletePin(URL)
-    }
-
-    // generate all Pins based on props.data passed in
-    if (data.subCat && data.curCollection) {
-        allPin = data.subCat[data.curCollection].map(imgArr => {
+    // generate all Pins based on DataContext data 
+    function allPin(data) {
+        return data.subCat[data.curCollection]?.map(imgArr => {
             return(
-                <Pin imgData={imgArr} key={imgArr[0]} deletePin={deletePin}/>
+                <Pin imgData={imgArr} key={imgArr[0]}/>
             )
         })
     }
-
     
     return(
+        <>
+        { data &&
         <div className="content-container">
             <div className="content-box-bar">
-                <i className="bi-trash3-fill delete-btn" />
-                {props.data.curCollection}
+                <div className="content-box-title">{data.curCollection}</div>
                 <i className="bi-search search-btn" />
             </div>
             <div className="content-box">
-                {allPin}
+                {allPin(data)}
             </div>
         </div>
+        }
+        </>
     )
 }
 

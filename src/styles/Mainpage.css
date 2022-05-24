@@ -79,7 +79,6 @@
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
     min-height: 300px;
     min-width: 300px;
-
 }
 .content-box-bar {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.808), rgba(39, 39, 39, 0.384));
@@ -91,29 +90,29 @@
     width: 100%;
     display: flex;
     align-items: center;
-    align-content: center;
+    align-content: flex-end;
     justify-content: space-between;
 }
 
-.content-box-bar > i {
-    margin: 2px 5px;
+.search-btn {
+    margin: 0px 5px 0px 0px;
+    text-align: center;
+    border-radius: 5px;
+    width: 1.2em;
+    height: 1.2em;
     background-color: rgb(71, 71, 71);
-    border-radius: 50%;
-    height: 1.7em;
-    width: 1.7em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.delete-btn:hover {
-    color: rgb(173, 0, 0);
-    background-color: rgb(170, 170, 170);
+    color: white;
 }
 
 .search-btn:hover {
     background-color: rgb(170, 170, 170);
     color: black;
+}
+
+.content-box-title{
+    padding: 5px 10px;
+    text-align: center;
+    width: 100%;
 }
 
 .content-box{
@@ -129,6 +128,7 @@
     overflow-y: scroll;
     flex: 1 0 0px;
 }
+
 
 .content-box::-webkit-scrollbar{
     width: 1vw;
@@ -205,7 +205,7 @@
 .pin-img {
     position: relative;
     height: 100%;
-    transition: 0.3s;
+    transition: 1s;
 }
 
 .pin-img:hover {

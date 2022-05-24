@@ -1,7 +1,10 @@
 import {useState} from 'react';
+import { useContext } from "react";
+import DataContext from "../contexts/DataContext";
+
 
 function Pin(props) {
-
+    const {handlePinDel} = useContext(DataContext);
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [copyIsClicked, setCopyIsClicked] = useState(false);
 
@@ -10,11 +13,12 @@ function Pin(props) {
        }
 
    const onPinDel = () => {
-    if (window.confirm(`Remove "${props.imgData[1]}"?`) == true) {
-       props.deletePin(props.imgData[0])
+    if (window.confirm(`Remove "${props.imgData[1]}"?`) === true) {
+       handlePinDel(props.imgData[0])
     }
    }
 
+   //copy link when input modal input is clicked
    const copyLink = () => {
     navigator.clipboard.writeText(props.imgData[0]);
     setCopyIsClicked(true);
@@ -32,7 +36,7 @@ function Pin(props) {
                             <div className="modal-cross" onClick={toggleModal}>X</div>
                         </div>
                         <div className='modal-img-container'>
-                            <img className="modal-img" src={props.imgData[0]} />
+                            <img className="modal-img" src={props.imgData[0]} alt={`${props.imgData[0]} modal`}/>
                         </div>
                         <input className="modal-url" onClick={copyLink} value={props.imgData[0]} readOnly/>
                     </div>
@@ -46,7 +50,7 @@ function Pin(props) {
                     <div className="pin-cross" onClick={onPinDel}>X</div>
                 </div>
                 <div className="pin-img-frame">
-                    <img className={"pin-img"} onClick={toggleModal} src={props.imgData[0]} />
+                    <img className={"pin-img"} onClick={toggleModal} src={props.imgData[0]} alt={`${props.imgData[0]} Pin`}/>
                 </div>
             </div>
             {!modalIsOpen? null : modal}

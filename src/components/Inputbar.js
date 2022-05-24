@@ -1,14 +1,17 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import DataContext from "../contexts/DataContext";
 
-function Inputbar(props) {
 
-    const {data} = props;
-    const [URL, setURL] = useState("");
+function Inputbar() {
+
+    const {data, handleURL} = useContext(DataContext)
+    const [URL, setURL] = useState();
     const inputRef = useRef(null);
 
+    //check if data already exist in collection array
     const isDuplicate = (URL) => {
-        if(data.subCat[data.curCollection].some((ele)=> ele[0] === URL)) {
+        if(data["subCat"][data["curCollection"]].some((ele)=> ele[0] === URL)) {
             return true;
         }
         return false;
@@ -21,6 +24,7 @@ function Inputbar(props) {
 
             if (isDuplicate(URL)) {
                 alert(`Image with (${URL}) already exist.`);
+                inputRef.current.value = "";
                 return;
             }
 
@@ -29,11 +33,15 @@ function Inputbar(props) {
                 alert("Image requires a label");
                 return;
             }
-            props.updateURL(URL, label);
+
+            inputRef.current.value = "";
+            // call use dataContext's function to update data
+            handleURL(URL, label);
         }
 
         img.onerror = () => {
             alert("Image URL cannot be loaded");
+            inputRef.current.value = "";
         }
         img.src = URL;
     }
@@ -50,7 +58,6 @@ function Inputbar(props) {
 
         //to check if image url dup/valid before passing the data over
         validURL(URL)
-
     }
 
     useEffect(() => {
@@ -60,7 +67,7 @@ function Inputbar(props) {
 
     return(
         <div className="inputbar-layout">
-            <input ref={inputRef} autoComplete="off" placeholder="Insert Image URL Here" onKeyUp={(e)=>{if(e.key == 'Enter'){handleOnSubmit()}}} onChange={handleOnChange}/>
+            <input ref={inputRef} autoComplete="off" placeholder="Insert Image URL Here" onKeyUp={(e)=>{if(e.key === 'Enter'){handleOnSubmit()}}} onChange={handleOnChange}/>
             <button className="pin-button" onClick={handleOnSubmit}>Pin <i className="bi-pin-fill" /></button>
         </div>
     )
