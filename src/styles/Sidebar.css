@@ -51,41 +51,46 @@
 .sidebar-title > .toggle-btn {
     transform: rotate(90deg);
     transition: transform 0.5s;
+    transition-timing-function: ease-out;
 }
 
 .sidebar-content {
     max-height: 0;
-    transition: max-height 0.5s;
+    transition: max-height 0.7s;
     transition-timing-function: ease-out;
+    transition-delay: 0s;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-item.open > .sidebar-content {
     max-height: 400px;
+}
+
+.sub-titles-con{
+    max-height: 300px;
     overflow-y: scroll;
 }
 
-.sidebar-item.open > .sidebar-content::-webkit-scrollbar{
+.sub-titles-con::-webkit-scrollbar{
     width: 0.7vw;
 }
 
-.sidebar-item.open > .sidebar-content::-webkit-scrollbar-thumb{
+.sub-titles-con::-webkit-scrollbar-thumb{
     border-radius: 2px;
     background-color: rgb(51, 51, 51);
 }
 
-.sidebar-item.open > .sidebar-content::-webkit-scrollbar-thumb:hover {
+.sub-titles-con::-webkit-scrollbar-thumb:hover {
     background-color: rgb(37, 37, 37);
 }
 
-.sidebar-item.open > .sidebar-content::-webkit-scrollbar-track{
+.sub-titles-con::-webkit-scrollbar-track{
     background-color: rgb(133, 133, 133);
     border-radius: 5px;
 }
 
-
-.sidebar-content > span {
+.sub-titles-con > span {
     display: flex;
     padding: 5px;
     margin: 5px;
@@ -94,16 +99,16 @@
 
 }
 
-.sidebar-content > span:hover {
+.sub-titles-con > span:hover {
     background-color: rgb(133, 133, 133);
 }
 
-.sidebar-content > span > i {
+.sub-titles-con > span > i {
     display: inline-block;
     width: 1.5em;
 }
 
-.sub-tile {
+.sub-title {
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
@@ -127,6 +132,11 @@
     min-width: 130px;
     white-space: nowrap;
     background-color: rgba(0, 77, 0, 0.897);
+}
+
+.sidebar-item.open > .new-col-btn {
+    display: inherit;
+    z-index: 5;
 }
 
 .new-col-btn:hover {
@@ -162,7 +172,7 @@
     .sidebar-item{
         font-size: 1em;
         width: 100%;
-        max-height: 300px;
+        max-height: 400px;
         overflow-y: hidden;
         align-self: flex-end;
         background-color: rgb(34, 34, 34);
@@ -172,12 +182,11 @@
         z-index: 100;
     }
 
-    .sidebar-item.open{
-        overflow-y: scroll;
-    }
-
     .sidebar-item:hover{
         background-color: rgb(34, 34, 34);
     }
 
+    .sidebar-title > .toggle-btn {
+        transform: scaleY(-1);
+    }
 }
