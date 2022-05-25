@@ -318,4 +318,16 @@
 
 }
 
+@media (max-height:400px) {
+
+    .main-page > h1 {
+        display: none;
+    }
+
+    .inputbar-layout {
+        margin-top: 10px;
+    }
+
+}
+
 
