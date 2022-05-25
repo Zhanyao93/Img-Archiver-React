@@ -131,7 +131,7 @@
 
 
 .content-box::-webkit-scrollbar{
-    width: 1vw;
+    width: 0.6vw;
 }
 
 .content-box::-webkit-scrollbar-thumb{
