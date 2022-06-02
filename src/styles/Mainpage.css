@@ -110,6 +110,23 @@
     color: black;
 }
 
+.search-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.search-bar{
+    border-radius: 5px;
+    border: 0px;
+    outline: none;
+    padding: 5px;
+    margin-right: 5px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(54, 54, 54);
+    position: absolute;
+}
+
 .content-box-title{
     padding: 5px 10px;
     text-align: center;
@@ -314,6 +331,10 @@
 @media (max-width:750px) {
     .content-box{
         grid-template-columns: 1fr 1fr;
+    }
+
+    .search-bar{
+        width: 150px;
     }
 
 }
